@@ -12,11 +12,9 @@ class ToDoRouter {
     weak var navigationController: UINavigationController?
 }
 
-
 //MARK: - ToDoListRouterProtocol
 extension ToDoRouter: ToDoListRouterProtocol {
     func showDetailsFor(item: ToDoItemDto) {
-        //assemble details module
         let presenter = ToDoDetailsPresenter(router: self, item: item)
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let detailsController = storyBoard.instantiateViewController(identifier: "ToDoDetailsViewController") as! ToDoDetailsViewController
@@ -25,8 +23,11 @@ extension ToDoRouter: ToDoListRouterProtocol {
     }
     
     func showItemCreation() {
-        //TODO: implement
-        print("router show item creation")
+        let presenter = ToDoAddPresenter()
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let addController = storyBoard.instantiateViewController(identifier: "ToDoAddViewController") as! ToDoAddViewController
+        addController.presenter = presenter
+        navigationController?.present(addController, animated: true, completion: nil)
     }
 }
 
