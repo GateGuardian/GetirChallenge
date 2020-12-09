@@ -7,7 +7,10 @@
 
 import UIKit
 
+private let ListTitle = "List"
+
 class ToDoListViewController: UIViewController {
+    
     @IBOutlet weak var tableView: UITableView!
     var presenter: ToDoListPresenterProtocol?
     
@@ -34,6 +37,7 @@ class ToDoListViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
+        self.title = ListTitle
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
         navigationItem.rightBarButtonItem = addButton
     }
@@ -59,7 +63,7 @@ extension ToDoListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = items[indexPath.row].name
+        cell.textLabel?.text = items[indexPath.row].title
         return cell
     }
 }

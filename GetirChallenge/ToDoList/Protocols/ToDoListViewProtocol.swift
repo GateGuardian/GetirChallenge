@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ToDoListViewProtocol {
+protocol ToDoListViewProtocol: class {
     func showItems(_ items: [ToDoItemDto])
 }

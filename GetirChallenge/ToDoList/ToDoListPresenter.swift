@@ -8,14 +8,19 @@
 import Foundation
 
 class ToDoListPresenter {
-    private var view: ToDoListViewProtocol?
+    var router: ToDoListRouterProtocol
+    private weak var view: ToDoListViewProtocol?
     //todoService
-    //router
+    
     private var items = [ToDoItemDto]()
+    
+    init(router: ToDoListRouterProtocol) {
+        self.router = router
+    }
 }
 
+//MARK: - ToDoListPresenterProtocol
 extension ToDoListPresenter: ToDoListPresenterProtocol {
-    
     func attachView(_ view: ToDoListViewProtocol) {
         self.view = view
         //fetch stored items
@@ -24,10 +29,9 @@ extension ToDoListPresenter: ToDoListPresenterProtocol {
     func tapAddItem() {
         //router show add item module
         print("router show add item module")
-        
-        //TODO:  delete
+        //TODO: delete
         let randomInt = Int.random(in: 1..<100)
-        items.append(ToDoItemDto(name: "name: \(randomInt)", description: ""))
+        items.append(ToDoItemDto(title: "name: \(randomInt)", details: ""))
         view?.showItems(items)
     }
     
@@ -40,7 +44,10 @@ extension ToDoListPresenter: ToDoListPresenterProtocol {
     }
     
     func tapDetailsItem(at index: Int) {
+        //index out of bounds check
         //router navigate to item details
         print("router navigate to item details \(index)")
+        let item = items[index]
+        router.showDetailsFor(item: item)
     }
 }
