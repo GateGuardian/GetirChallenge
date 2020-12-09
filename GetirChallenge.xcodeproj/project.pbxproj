@@ -64,7 +64,6 @@
 		B8297BD525810AD800A65131 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				B8297BEE2581163200A65131 /* Dto */,
 				B8297BD625810AE700A65131 /* Protocols */,
 				B8297BDE25810C6D00A65131 /* ToDoListViewController.swift */,
 				B8297BE125810C9200A65131 /* ToDoListPresenter.swift */,
@@ -130,6 +129,7 @@
 		B8D95D162580FF05004F08E9 /* GetirChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				B8297BEE2581163200A65131 /* Dto */,
 				B8297BFA2581220000A65131 /* ToDoDetails */,
 				B8297BD525810AD800A65131 /* ToDoList */,
 				B8D95D172580FF05004F08E9 /* AppDelegate.swift */,
