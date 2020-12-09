@@ -26,7 +26,6 @@
 		B8297C1C25815CD200A65131 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8297C1B25815CD200A65131 /* UIViewController+Keyboard.swift */; };
 		B8D95D182580FF05004F08E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D95D172580FF05004F08E9 /* AppDelegate.swift */; };
 		B8D95D1A2580FF05004F08E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D95D192580FF05004F08E9 /* SceneDelegate.swift */; };
-		B8D95D1C2580FF05004F08E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D95D1B2580FF05004F08E9 /* ViewController.swift */; };
 		B8D95D1F2580FF05004F08E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8D95D1D2580FF05004F08E9 /* Main.storyboard */; };
 		B8D95D212580FF06004F08E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8D95D202580FF06004F08E9 /* Assets.xcassets */; };
 		B8D95D242580FF06004F08E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8D95D222580FF06004F08E9 /* LaunchScreen.storyboard */; };
@@ -53,7 +52,6 @@
 		B8D95D142580FF05004F08E9 /* GetirChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetirChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D95D172580FF05004F08E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8D95D192580FF05004F08E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B8D95D1B2580FF05004F08E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B8D95D1E2580FF05004F08E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8D95D202580FF06004F08E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8D95D232580FF06004F08E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -167,13 +165,12 @@
 			isa = PBXGroup;
 			children = (
 				B8297C1A25815CBC00A65131 /* Extensions */,
-				B8297C0B2581435300A65131 /* ToDoAdd */,
 				B8297BEE2581163200A65131 /* Dto */,
+				B8297C0B2581435300A65131 /* ToDoAdd */,
 				B8297BFA2581220000A65131 /* ToDoDetails */,
 				B8297BD525810AD800A65131 /* ToDoList */,
 				B8D95D172580FF05004F08E9 /* AppDelegate.swift */,
 				B8D95D192580FF05004F08E9 /* SceneDelegate.swift */,
-				B8D95D1B2580FF05004F08E9 /* ViewController.swift */,
 				B8D95D1D2580FF05004F08E9 /* Main.storyboard */,
 				B8D95D202580FF06004F08E9 /* Assets.xcassets */,
 				B8D95D222580FF06004F08E9 /* LaunchScreen.storyboard */,
@@ -256,7 +253,6 @@
 				B8297BF02581164C00A65131 /* ToDoItemDto.swift in Sources */,
 				B8297C122581438B00A65131 /* ToDoAddPresenterProtocol.swift in Sources */,
 				B8297C062581252E00A65131 /* ToDoDetailsViewController.swift in Sources */,
-				B8D95D1C2580FF05004F08E9 /* ViewController.swift in Sources */,
 				B8D95D182580FF05004F08E9 /* AppDelegate.swift in Sources */,
 				B8297BF425811C1E00A65131 /* ToDoListRouterProtocol.swift in Sources */,
 				B8297BF825811EF100A65131 /* ToDoRouter.swift in Sources */,
