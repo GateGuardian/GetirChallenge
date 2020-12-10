@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ToDoAddViewProtocol: class {
+protocol ToDoAddViewProtocol: ToDoBaseViewProtocol {
     func dismiss()
 }

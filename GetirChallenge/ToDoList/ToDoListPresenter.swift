@@ -11,7 +11,6 @@ class ToDoListPresenter {
     var router: ToDoListRouterProtocol
     var todoService: ToDoServiceProtocol
     private weak var view: ToDoListViewProtocol?
-    
     private var items = [ToDoItemDto]()
     
     init(router: ToDoListRouterProtocol, todoService: ToDoServiceProtocol) {
@@ -53,7 +52,12 @@ extension ToDoListPresenter: ToDoListPresenterProtocol {
     func tapDeleteItem(at index: Int) {
         guard 0 ... (items.count - 1) ~= index else { return }
         let itemToDelete = items[index]
-        todoService.delete(item: itemToDelete) { (error) in }
+        todoService.delete(item: itemToDelete) { (error) in
+            if let error = error {
+                self.view?.showErrorAlert(message: error.localizedDescription)
+                return
+            }
+        }
     }
     
     func tapDetailsItem(at index: Int) {

@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ToDoDetailsViewProtocol: class {
+protocol ToDoDetailsViewProtocol: ToDoBaseViewProtocol {
     func populateWith(item: ToDoItemDto)
 }

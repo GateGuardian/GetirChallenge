@@ -11,7 +11,6 @@ private let DetailsTitle = "Details"
 
 class ToDoDetailsViewController: ToDoBaseEditViewController {
     var presenter: ToDoDetailsPresenterProtocol?
-    
     var item: ToDoItemDto?
     
     override func viewDidLoad() {
@@ -22,7 +21,6 @@ class ToDoDetailsViewController: ToDoBaseEditViewController {
     }
     
     //MARK: - Actions
-    
     @objc private func didTapAdd() {
         presenter?.tapAddItem()
     }
@@ -36,10 +34,8 @@ class ToDoDetailsViewController: ToDoBaseEditViewController {
     }
     
     @objc private func didTapSave() {
-        //presenter save changes
-        guard let item = item else { return }
-        let updatetd = ToDoItemDto(id: item.id, title: titleTextField.text ?? "", details: detailTextView.text ?? "", createdAt: item.createdAt)
-        presenter?.tapSaveItem(item: updatetd)
+        guard let title = titleTextField.text, let details = detailTextView.text else { return }
+        presenter?.tapSaveItem(title: title, details: details)
         setupViewMode()
     }
     
@@ -49,7 +45,6 @@ class ToDoDetailsViewController: ToDoBaseEditViewController {
     }
     
     //MARK: - Private
-    
     private func populateItemInfo() {
         titleTextField.text = item?.title
         detailTextView.text = item?.details
@@ -72,7 +67,6 @@ class ToDoDetailsViewController: ToDoBaseEditViewController {
         let cancelBUtton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelEdit))
         navigationItem.rightBarButtonItems = [saveButton, cancelBUtton]
     }
-    
 }
 
 //MARK: - ToDoDetailsViewProtocol

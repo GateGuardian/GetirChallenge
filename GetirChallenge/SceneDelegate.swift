@@ -18,9 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         let realmService = try? ToDoRealmService()
-        
         let todoService: ToDoServiceProtocol = realmService ?? ToDoInMemoryService()
-        let router = ToDoRouter(todoService: todoService)
+        let validator = ToDoItemValidator()
+        let router = ToDoRouter(todoService: todoService, validator: validator)
         let presenter = ToDoListPresenter(router: router, todoService: todoService)
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let listController = storyBoard.instantiateViewController(identifier: "ToDoListViewController") as! ToDoListViewController

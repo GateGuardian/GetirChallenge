@@ -9,5 +9,5 @@ import Foundation
 
 protocol ToDoAddPresenterProtocol {
     func attachView(_ view: ToDoAddViewProtocol)
-    func tapSaveItem(item: ToDoItemDto)
+    func tapSaveItem(title: String, details: String)
 }

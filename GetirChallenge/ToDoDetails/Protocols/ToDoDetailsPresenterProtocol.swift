@@ -11,5 +11,5 @@ protocol ToDoDetailsPresenterProtocol {
     func attachView(_ view: ToDoDetailsViewProtocol)
     func tapAddItem()
     func tapDeleteItem()
-    func tapSaveItem(item: ToDoItemDto)
+    func tapSaveItem(title: String, details: String)
 }
