@@ -35,7 +35,6 @@ class ToDoDetailsViewController: ToDoBaseEditViewController {
     @objc private func didTapSave() {
         guard let title = titleTextField.text, let details = detailTextView.text else { return }
         presenter?.tapSaveItem(title: title, details: details)
-//        setupViewMode()
     }
     
     @objc private func didTapCancelEdit() {
