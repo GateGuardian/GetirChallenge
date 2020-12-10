@@ -57,7 +57,7 @@ class ToDoDetailsViewController: UIViewController {
     @objc private func didTapSave() {
         //presenter save changes
         guard let item = item else { return }
-        let updatetd = ToDoItemDto(id: item.id, title: titleTextField.text ?? "", details: detailTextView.text ?? "")
+        let updatetd = ToDoItemDto(id: item.id, title: titleTextField.text ?? "", details: detailTextView.text ?? "", createdAt: item.createdAt)
         presenter?.tapSaveItem(item: updatetd)
         setupViewMode()
     }

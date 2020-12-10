@@ -17,7 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        let todoService = ToDoInMemoryService()
+        let realmService = try? ToDoRealmService()
+        
+        let todoService: ToDoServiceProtocol = realmService ?? ToDoInMemoryService()
         let router = ToDoRouter(todoService: todoService)
         let presenter = ToDoListPresenter(router: router, todoService: todoService)
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)

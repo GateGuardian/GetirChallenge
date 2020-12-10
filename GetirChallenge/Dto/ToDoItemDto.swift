@@ -11,4 +11,5 @@ struct ToDoItemDto {
     let id: String
     var title: String
     var details: String
+    var createdAt: Double
 }

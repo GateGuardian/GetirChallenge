@@ -51,13 +51,13 @@ extension ToDoListPresenter: ToDoListPresenterProtocol {
     }
     
     func tapDeleteItem(at index: Int) {
-        //index out of bounds check
+        guard 0 ... (items.count - 1) ~= index else { return }
         let itemToDelete = items[index]
         todoService.delete(item: itemToDelete) { (error) in }
     }
     
     func tapDetailsItem(at index: Int) {
-        //index out of bounds check
+        guard 0 ... (items.count - 1) ~= index else { return }
         let item = items[index]
         router.showDetailsFor(item: item)
     }

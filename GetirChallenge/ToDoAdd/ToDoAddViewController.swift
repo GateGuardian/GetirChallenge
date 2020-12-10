@@ -43,7 +43,7 @@ class ToDoAddViewController: UIViewController {
     @IBAction private func didTapSave() {
         //presenter save changes
         guard let title = titleTextField.text , !title.isEmpty, let details = detailTextView.text, !details.isEmpty else { return }
-        let newItem = ToDoItemDto(id: UUID().uuidString, title: title, details: details)
+        let newItem = ToDoItemDto(id: UUID().uuidString, title: title, details: details, createdAt: Date().timeIntervalSince1970)
         presenter?.tapSaveItem(item: newItem)
     }
     
