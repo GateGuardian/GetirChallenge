@@ -9,7 +9,11 @@ import Foundation
 
 class ToDoAddPresenter {
     var view: ToDoAddViewProtocol?
-    //todoService
+    let todoService: ToDoServiceProtocol
+    
+    init(todoService: ToDoServiceProtocol) {
+        self.todoService = todoService
+    }
 }
 
 //MARK: - ToDoAddPresenterProtocol
@@ -19,7 +23,10 @@ extension ToDoAddPresenter: ToDoAddPresenterProtocol {
     }
     
     func tapSaveItem(item: ToDoItemDto) {
-        //service save item
-        view?.dismiss()
+        todoService.add(item: item) { (error) in
+            guard error == nil else { return }
+            self.view?.dismiss()
+        }
+        
     }
 }

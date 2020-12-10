@@ -9,13 +9,33 @@ import Foundation
 
 class ToDoListPresenter {
     var router: ToDoListRouterProtocol
+    var todoService: ToDoServiceProtocol
     private weak var view: ToDoListViewProtocol?
-    //todoService
     
     private var items = [ToDoItemDto]()
     
-    init(router: ToDoListRouterProtocol) {
+    init(router: ToDoListRouterProtocol, todoService: ToDoServiceProtocol) {
         self.router = router
+        self.todoService = todoService
+        setup()
+    }
+    
+    //MARK: - Private
+    private func setup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(todosUpdated(notification:)), name: Notification.Name.ToDoItemUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(todosUpdated(notification:)), name: Notification.Name.ToDoItemCreated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(todosUpdated(notification:)), name: Notification.Name.ToDoItemDeleted, object: nil)
+    }
+    
+    @objc private func todosUpdated(notification: Notification) {
+        fetchToDoItems()
+    }
+    
+    private func fetchToDoItems() {
+        todoService.getToDoItems { (items) in
+            self.items = items
+            self.view?.showItems(items)
+        }
     }
 }
 
@@ -23,30 +43,21 @@ class ToDoListPresenter {
 extension ToDoListPresenter: ToDoListPresenterProtocol {
     func attachView(_ view: ToDoListViewProtocol) {
         self.view = view
-        //fetch stored items
+        fetchToDoItems()
     }
     
     func tapAddItem() {
-        //router show add item module
-        print("router show add item module")
-        //TODO: delete
-        let randomInt = Int.random(in: 1..<100)
-        items.append(ToDoItemDto(title: "name: \(randomInt)", details: ""))
-        view?.showItems(items)
+        router.showItemCreation()
     }
     
     func tapDeleteItem(at index: Int) {
         //index out of bounds check
-        //todoService delete item
-        print("todoService delete item \(index)")
-        items.remove(at: index)
-        view?.showItems(items)
+        let itemToDelete = items[index]
+        todoService.delete(item: itemToDelete) { (error) in }
     }
     
     func tapDetailsItem(at index: Int) {
         //index out of bounds check
-        //router navigate to item details
-        print("router navigate to item details \(index)")
         let item = items[index]
         router.showDetailsFor(item: item)
     }

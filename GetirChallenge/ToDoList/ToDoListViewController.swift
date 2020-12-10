@@ -73,6 +73,10 @@ extension ToDoListViewController: UITableViewDataSource {
 extension ToDoListViewController: ToDoListViewProtocol {
     func showItems(_ items: [ToDoItemDto]) {
         self.items = items
-        self.tableView.reloadSections(IndexSet(integer: 0), with: UITableView.RowAnimation.fade)
+        if viewIfLoaded?.window == nil {
+            self.tableView.reloadData()
+        } else {
+            self.tableView.reloadSections(IndexSet(integer: 0), with: UITableView.RowAnimation.fade)
+        }
     }
 }

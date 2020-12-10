@@ -9,11 +9,12 @@ import Foundation
 
 class ToDoDetailsPresenter {
     var router: ToDoDetailsRouterProtocol
+    var todoService: ToDoServiceProtocol
     var item: ToDoItemDto
     private weak var view: ToDoDetailsViewProtocol?
-    //todoService
     
-    init(router: ToDoDetailsRouterProtocol, item: ToDoItemDto) {
+    init(todoService: ToDoServiceProtocol, router: ToDoDetailsRouterProtocol, item: ToDoItemDto) {
+        self.todoService = todoService
         self.router = router
         self.item = item
     }
@@ -31,13 +32,17 @@ extension ToDoDetailsPresenter: ToDoDetailsPresenterProtocol {
     }
     
     func tapDeleteItem() {
-        //TODO: service delete item
-        router.dismissDetails()
+        todoService.delete(item: item) { (error) in
+            //TODO: error handling
+            self.router.dismissDetails()
+        }
     }
     
     func tapSaveItem(item: ToDoItemDto) {
-        //TODO: service save item
-        view?.populateWith(item: item)
+        todoService.update(item: item) { (error) in
+            //TODO: error handling
+            self.view?.populateWith(item: item)
+        }
     }
 }
 

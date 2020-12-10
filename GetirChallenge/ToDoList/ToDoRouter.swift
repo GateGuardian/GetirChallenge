@@ -8,14 +8,18 @@
 import UIKit
 
 class ToDoRouter {
-    //services and providers container
+    let todoService: ToDoServiceProtocol
     weak var navigationController: UINavigationController?
+    
+    init(todoService: ToDoServiceProtocol) {
+        self.todoService = todoService
+    }
 }
 
 //MARK: - ToDoListRouterProtocol
 extension ToDoRouter: ToDoListRouterProtocol {
     func showDetailsFor(item: ToDoItemDto) {
-        let presenter = ToDoDetailsPresenter(router: self, item: item)
+        let presenter = ToDoDetailsPresenter(todoService: todoService, router: self, item: item)
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let detailsController = storyBoard.instantiateViewController(identifier: "ToDoDetailsViewController") as! ToDoDetailsViewController
         detailsController.presenter = presenter
@@ -23,7 +27,7 @@ extension ToDoRouter: ToDoListRouterProtocol {
     }
     
     func showItemCreation() {
-        let presenter = ToDoAddPresenter()
+        let presenter = ToDoAddPresenter(todoService: todoService)
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let addController = storyBoard.instantiateViewController(identifier: "ToDoAddViewController") as! ToDoAddViewController
         addController.presenter = presenter
