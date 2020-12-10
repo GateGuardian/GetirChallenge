@@ -29,6 +29,7 @@
 		B8297C2B2581723900A65131 /* ToDoInMemoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8297C2A2581723900A65131 /* ToDoInMemoryService.swift */; };
 		B86FCF22258218F5006C52E3 /* ToDoRealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86FCF21258218F5006C52E3 /* ToDoRealmService.swift */; };
 		B86FCF2625821B4C006C52E3 /* ToDoRealmItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86FCF2525821B4C006C52E3 /* ToDoRealmItem.swift */; };
+		B86FCF2B258248CE006C52E3 /* ToDoBaseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86FCF2A258248CE006C52E3 /* ToDoBaseEditViewController.swift */; };
 		B8D95D182580FF05004F08E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D95D172580FF05004F08E9 /* AppDelegate.swift */; };
 		B8D95D1A2580FF05004F08E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D95D192580FF05004F08E9 /* SceneDelegate.swift */; };
 		B8D95D1F2580FF05004F08E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8D95D1D2580FF05004F08E9 /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 		B8297C2A2581723900A65131 /* ToDoInMemoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoInMemoryService.swift; sourceTree = "<group>"; };
 		B86FCF21258218F5006C52E3 /* ToDoRealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRealmService.swift; sourceTree = "<group>"; };
 		B86FCF2525821B4C006C52E3 /* ToDoRealmItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRealmItem.swift; sourceTree = "<group>"; };
+		B86FCF2A258248CE006C52E3 /* ToDoBaseEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoBaseEditViewController.swift; sourceTree = "<group>"; };
 		B8D95D142580FF05004F08E9 /* GetirChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetirChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D95D172580FF05004F08E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8D95D192580FF05004F08E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,6 +195,14 @@
 			path = RealmEntities;
 			sourceTree = "<group>";
 		};
+		B86FCF29258248AB006C52E3 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B86FCF2A258248CE006C52E3 /* ToDoBaseEditViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		B8D95D0B2580FF05004F08E9 = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +224,7 @@
 		B8D95D162580FF05004F08E9 /* GetirChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				B86FCF29258248AB006C52E3 /* Base */,
 				B8297C20258170F300A65131 /* Services */,
 				B8297C1A25815CBC00A65131 /* Extensions */,
 				B8297BEE2581163200A65131 /* Dto */,
@@ -363,6 +374,7 @@
 				B8297BF825811EF100A65131 /* ToDoRouter.swift in Sources */,
 				B8297C15258144DD00A65131 /* ToDoAddViewController.swift in Sources */,
 				B8297BD825810B0700A65131 /* ToDoListViewProtocol.swift in Sources */,
+				B86FCF2B258248CE006C52E3 /* ToDoBaseEditViewController.swift in Sources */,
 				B8297C232581712200A65131 /* ToDoServiceProtocol.swift in Sources */,
 				B8297BDC25810B1600A65131 /* ToDoListPresenterProtocol.swift in Sources */,
 				B8297C2B2581723900A65131 /* ToDoInMemoryService.swift in Sources */,

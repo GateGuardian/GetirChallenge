@@ -9,34 +9,20 @@ import UIKit
 
 private let CornerRadius: CGFloat = 6.0
 
-class ToDoAddViewController: UIViewController {
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var detailTextView: UITextView!
+class ToDoAddViewController: ToDoBaseEditViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     var presenter: ToDoAddPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupAppearance()
         presenter?.attachView(self)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        subscribeToKeyboardNotifications()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        unsubscribeKeyboardNotifications()
-    }
-    
-    override func keyboardChangedFrame(_ frame: CGRect) {
-        let bottomOffset = (frame.origin.y >= view.bounds.size.height) ? 0.0 : frame.height
-        scrollView.contentInset.bottom = bottomOffset
-        scrollView.verticalScrollIndicatorInsets.bottom = bottomOffset
+    override func setupAppearance() {
+        super.setupAppearance()
+        saveButton.layer.cornerRadius = CornerRadius
+        cancelButton.layer.cornerRadius = CornerRadius
     }
     
     //MARK: - Actions
@@ -49,13 +35,6 @@ class ToDoAddViewController: UIViewController {
     
     @IBAction private func didTapCancel() {
         dismiss(animated: true, completion: nil)
-    }
-    
-    //MARK: - Private
-    private func setupAppearance() {
-        saveButton.layer.cornerRadius = CornerRadius
-        cancelButton.layer.cornerRadius = CornerRadius
-        detailTextView.layer.cornerRadius = CornerRadius
     }
 }
 
