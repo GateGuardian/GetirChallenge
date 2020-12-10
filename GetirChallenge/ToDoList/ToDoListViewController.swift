@@ -8,9 +8,9 @@
 import UIKit
 
 private let ListTitle = "List"
+private let CellIdentifier = "CellIdentifier"
 
 class ToDoListViewController: UIViewController {
-    
     @IBOutlet weak var tableView: UITableView!
     var presenter: ToDoListPresenterProtocol?
     
@@ -24,13 +24,11 @@ class ToDoListViewController: UIViewController {
     }
     
     //MARK: - Actions
-    
     @objc private func didTapAdd() {
         presenter?.tapAddItem()
     }
     
     //MARK: - Private
-    
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -62,7 +60,13 @@ extension ToDoListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        var cell: UITableViewCell!
+        cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier)
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: CellIdentifier)
+        }
+        cell.selectionStyle = .none
+        cell.backgroundColor = .lightText
         cell.textLabel?.text = items[indexPath.row].title
         return cell
     }
