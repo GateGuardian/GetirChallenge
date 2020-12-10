@@ -16,7 +16,6 @@ class ToDoDetailsViewController: ToDoBaseEditViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = DetailsTitle
-        setupViewMode()
         presenter?.attachView(self)
     }
     
@@ -36,7 +35,7 @@ class ToDoDetailsViewController: ToDoBaseEditViewController {
     @objc private func didTapSave() {
         guard let title = titleTextField.text, let details = detailTextView.text else { return }
         presenter?.tapSaveItem(title: title, details: details)
-        setupViewMode()
+//        setupViewMode()
     }
     
     @objc private func didTapCancelEdit() {
@@ -73,6 +72,7 @@ class ToDoDetailsViewController: ToDoBaseEditViewController {
 extension ToDoDetailsViewController: ToDoDetailsViewProtocol {
     func populateWith(item: ToDoItemDto) {
         self.item = item
+        setupViewMode()
         populateItemInfo()
     }
 }
